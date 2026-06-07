@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Zapiski</title>
+
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}">
+
+
+</head>
+<body>
+
+<h1>Moji zapiski</h1>
+
+<p>
+    Prijavljen: {{ session.username }}
+</p>
+
+<a href="/logout">Odjava</a>
+
+<hr>
+
+<h2>Iskanje</h2>
+
+<input
+ type="text"
+ id="search"
+ placeholder="Išči po naslovu">
+
+<ul id="searchResults"></ul>
+
+<hr>
+
+<h2>Dodaj zapisek</h2>
+
+<form method="POST" action="/add">
+
+
+<input
+    type="text"
+    name="title"
+    placeholder="Naslov"
+    required>
+
+<br><br>
+
+<textarea
+    name="content"
+    rows="5"
+    cols="50"
+    placeholder="Vsebina"
+    required></textarea>
+
+<br><br>
+
+<button type="submit">
+    Dodaj
+</button>
+
+
+</form>
+
+<hr>
+
+<h2>Vsi zapiski</h2>
+
+{% for note in notes %}
+
+<div class="note">
+
+<h3>{{ note.title }}</h3>
+
+<p>{{ note.content }}</p>
+
+<a href="/edit/{{ note.id }}">
+    Uredi
+</a>
+
+
+<a href="/delete/{{ note.id }}">
+    Izbriši
+</a>
+
+
+</div>
+
+{% endfor %}
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>

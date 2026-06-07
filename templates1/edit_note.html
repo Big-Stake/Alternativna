@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Uredi zapisek</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<h1>Uredi zapisek</h1>
+
+<form method="POST">
+
+    <input
+        type="text"
+        name="title"
+        value="{{ note.title }}"
+        required>
+
+    <br><br>
+
+    <textarea
+        name="content"
+        rows="6"
+        cols="50"
+        required>{{ note.content }}</textarea>
+
+    <br><br>
+
+    <button type="submit">
+        Shrani
+    </button>
+
+</form>
+
+<br>
+
+<a href="/">Nazaj</a>
+
+</body>
+</html>
