@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profil</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<h1>Moj profil</h1>
+
+<p>
+    {{ session.username }}
+</p>
+
+<a href="/">Domov</a>
+
+<hr>
+
+{% for post in posts %}
+
+<div class="post">
+
+    <p>
+        {{ post.text }}
+    </p>
+
+    {% if post.image %}
+
+    <img
+        src="{{ url_for('static',
+        filename='slike/' + post.image) }}"
+        width="250">
+
+    {% endif %}
+
+    <br><br>
+
+<a href="/edit_post/{{ post.id }}">
+    Uredi
+</a>
+
+|
+
+<a href="/delete_post/{{ post.id }}">
+    Izbriši
+</a>
+
+</div>
+
+{% endfor %}
+
+</body>
+</html>

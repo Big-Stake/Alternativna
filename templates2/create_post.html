@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Nova objava</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<h1>Nova objava</h1>
+
+<form method="POST"
+      enctype="multipart/form-data">
+
+    <textarea
+        name="text"
+        rows="5"
+        cols="50"
+        placeholder="Kaj razmišljaš?"
+        required></textarea>
+
+    <br><br>
+
+    <input
+        type="file"
+        name="image">
+
+    <br><br>
+
+    <button type="submit">
+        Objavi
+    </button>
+
+</form>
+
+<br>
+
+<a href="/">Nazaj</a>
+
+</body>
+</html>
