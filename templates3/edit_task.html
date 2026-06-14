@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Uredi opravilo</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<h1>Uredi opravilo</h1>
+
+<form method="POST">
+
+    <input
+        type="text"
+        name="title"
+        value="{{ task.title }}"
+        required>
+
+    <br><br>
+
+    <textarea
+        name="description"
+        rows="5"
+        cols="50"
+        required>{{ task.description }}</textarea>
+
+    <br><br>
+
+    <select name="priority">
+
+        <option {% if task.priority=="Nizka" %}selected{% endif %}>
+            Nizka
+        </option>
+
+        <option {% if task.priority=="Srednja" %}selected{% endif %}>
+            Srednja
+        </option>
+
+        <option {% if task.priority=="Visoka" %}selected{% endif %}>
+            Visoka
+        </option>
+
+    </select>
+
+    <br><br>
+
+    <button type="submit">
+        Shrani
+    </button>
+
+</form>
+
+</body>
+</html>

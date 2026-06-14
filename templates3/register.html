@@ -1,37 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Dodaj opravilo</title>
+    <title>Registracija</title>
 
     <link rel="stylesheet"
           href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
-<h1>Dodaj opravilo</h1>
+<h1>Registracija</h1>
 
 <form method="POST">
 
     <input
         type="text"
-        name="title"
-        placeholder="Naslov"
+        name="username"
+        placeholder="Uporabniško ime"
         required>
 
     <br><br>
 
-    <textarea
-        name="description"
-        rows="5"
-        cols="50"
-        placeholder="Opis"
-        required></textarea>
-
+    <input
+        type="password"
+        name="password"
+        placeholder="Geslo"
+        required>
 
     <br><br>
 
     <button type="submit">
-        Shrani
+        Registracija
     </button>
 
 </form>

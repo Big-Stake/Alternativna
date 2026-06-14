@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Manager</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<h1>Task Manager</h1>
+
+<p>{{ session.username }}</p>
+
+<a href="/add_task">Dodaj opravilo</a>
+|
+<a href="/logout">Odjava</a>
+
+<hr>
+
+<h3>Filtriranje</h3>
+
+<a href="/">Vsa opravila</a>
+|
+<a href="/?status=V teku">V teku</a>
+|
+<a href="/?status=Končano">Končano</a>
+
+<hr>
+
+{% for task in tasks %}
+
+<div class="task">
+
+    <h3>{{ task.title }}</h3>
+
+    <p>{{ task.description }}</p>
+
+    <p>
+        Prioriteta:
+        {{ task.priority }}
+    </p>
+
+    <p>
+        Status:
+        <span id="status-{{ task.id }}">
+            {{ task.status }}
+        </span>
+    </p>
+
+    <button onclick="changeStatus({{ task.id }})">
+        Spremeni status
+    </button>
+
+    <br><br>
+
+    <a href="/edit_task/{{ task.id }}">
+        Uredi
+    </a>
+
+    |
+
+    <a href="/delete_task/{{ task.id }}">
+        Izbriši
+    </a>
+
+</div>
+
+{% endfor %}
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
