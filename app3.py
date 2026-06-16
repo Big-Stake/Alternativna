@@ -163,7 +163,7 @@ def add_task():
 
         title = request.form["title"]
         description = request.form["description"]
-        priority = request.form["priority"]
+        priority = request.form.get("priority")
 
         conn = get_db()
 
